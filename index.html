@@ -1,1594 +1,234 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Happy Birthday Surmeet Kaur ✨🐼</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Three.js r128 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <!-- Google Fonts -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#143d35">
+  <meta name="description" content="A little birthday surprise made just for Surmeet Kaur.">
+  <title>Happy Birthday, Surmeet! ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-beige-1: #fdf8f2;
-      --bg-beige-2: #f2e2ce;
-      --accent-rose: #e56b86;
+      color-scheme: light;
+      --forest: #143d35;
+      --cream: #fffaf0;
+      --coral: #ff765e;
+      --mint: #c9efcb;
+      --ink: #1d2925;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    body, html {
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    .topbar {
+      min-height: 66px;
+      padding: 0 clamp(20px, 5vw, 76px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--forest);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; }
+    .brand-mark { font-size: 22px; }
+    .top-note { font-size: 13px; font-weight: 600; }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: min(78svh, 760px);
+      min-height: min(78vh, 760px);
+      display: flex;
+      align-items: flex-end;
       overflow: hidden;
-      font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(155deg, var(--bg-beige-1) 0%, var(--bg-beige-2) 100%);
-      transition: background 2.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .font-serif-title {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* Night Sky Mode Background */
-    body.night-mode {
-      background: radial-gradient(circle at 50% 18%, #211a4c 0%, #0f0c29 55%, #05040d 100%);
-    }
-
-    /* Lights Out Finale Background */
-    body.lights-out {
-      background: #020205 !important;
-    }
-
-    /* Cozy Glassmorphic Beige Card */
-    .beige-card {
-      background: rgba(255, 251, 246, 0.90);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(226, 200, 178, 0.78);
-      box-shadow: 0 22px 55px rgba(138, 98, 74, 0.15), 0 4px 14px rgba(138, 98, 74, 0.08);
-    }
-
-    /* Night Sky Glass Card */
-    .night-card {
-      background: rgba(18, 15, 44, 0.74);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1.5px solid rgba(255, 210, 235, 0.28);
-      box-shadow: 0 0 45px rgba(244, 114, 182, 0.25), inset 0 0 22px rgba(255, 255, 255, 0.06);
-    }
-
-    /* Cute Primary Button */
-    .btn-cute {
-      background: linear-gradient(135deg, #f47296 0%, #dc4c73 100%);
+      background: #355d4c;
       color: white;
-      box-shadow: 0 10px 24px -4px rgba(220, 76, 115, 0.52), inset 0 2px 0 rgba(255, 255, 255, 0.38);
-      transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .btn-cute:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 14px 28px -4px rgba(220, 76, 115, 0.68), inset 0 2px 0 rgba(255, 255, 255, 0.48);
-    }
-    .btn-cute:active {
-      transform: translateY(1px) scale(0.96);
-    }
-
-    /* Secondary Beige Button */
-    .btn-beige {
-      background: linear-gradient(135deg, #f5e8db 0%, #e6d2bd 100%);
-      color: #6b4e3e;
-      border: 1px solid #d5bca3;
-      box-shadow: 0 6px 14px -3px rgba(107, 78, 62, 0.14);
-      transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .btn-beige:hover {
-      background: linear-gradient(135deg, #efe0d0 0%, #dec4aa 100%);
-    }
-
-    /* Smooth Floating Keyframes */
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-9px) rotate(1.5deg); }
-    }
-    .animate-float {
-      animation: floatSlow 3.6s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 16px rgba(244, 114, 150, 0.45), 0 0 32px rgba(244, 114, 150, 0.2); }
-      50% { box-shadow: 0 0 28px rgba(244, 114, 150, 0.85), 0 0 56px rgba(244, 114, 150, 0.45); }
-    }
-    .pulse-glow {
-      animation: pulseGlow 2.1s infinite;
-    }
-
-    @keyframes textShimmer {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .shimmer-text {
-      background: linear-gradient(90deg, #ffe4ec, #ffb3c6, #fef08a, #f9a8d4, #ffe4ec);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: textShimmer 4.8s ease infinite;
-    }
-
-    /* Kiss Pop Animation */
-    @keyframes kissPop {
-      0% { transform: scale(0.2) rotate(-16deg); opacity: 0; }
-      32% { transform: scale(1.28) rotate(5deg); opacity: 1; }
-      65% { transform: scale(1.06) rotate(-2deg); opacity: 1; }
-      86% { transform: scale(1.12) rotate(0deg); opacity: 0.95; }
-      100% { transform: scale(1.22) translateY(-22px); opacity: 0; }
-    }
-    .kiss-anim {
-      animation: kissPop 3.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    /* Screen Warm Blush Mist on Kiss */
-    @keyframes screenBlush {
-      0% { opacity: 0; }
-      28% { opacity: 1; }
-      82% { opacity: 0.85; }
-      100% { opacity: 0; }
-    }
-    .glass-kiss-glow {
-      background: radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.42) 0%, rgba(244, 114, 182, 0.22) 48%, transparent 76%);
-      animation: screenBlush 3.4s ease-out forwards;
-    }
-
-    /* Floating Compliment Pills */
-    @keyframes badgeFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-4px); }
-    }
-    .compliment-pill {
-      animation: badgeFloat 3.2s ease-in-out infinite;
-    }
-
-    /* Balloon Wrapper */
-    .balloon-wrapper {
+    .hero-photo {
       position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 44%;
+      animation: photo-arrive 1.2s ease-out both;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, rgb(9 35 29 / 74%) 0%, rgb(9 35 29 / 35%) 48%, rgb(9 35 29 / 3%) 100%),
+        linear-gradient(0deg, rgb(9 35 29 / 27%), transparent 58%);
+    }
+    .hero-copy {
+      width: min(760px, 100%);
+      padding: clamp(36px, 8vw, 104px);
+      padding-right: 28px;
+      animation: copy-arrive 700ms 120ms both;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 20px;
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--mint); }
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      font: 600 clamp(54px, 8vw, 104px)/0.98 var(--serif);
+      text-wrap: balance;
+    }
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 440px;
+      margin: 22px 0 28px;
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.6;
+      color: rgb(255 255 255 / 90%);
+    }
+    .reveal-button {
+      min-height: 52px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      background: var(--mint);
+      color: var(--forest);
+      font: 700 15px var(--sans);
       cursor: pointer;
-      touch-action: manipulation;
-      will-change: transform;
-      transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: background 160ms ease, transform 160ms ease;
     }
-    .balloon-wrapper:active {
-      transform: scale(0.86);
+    .reveal-button:hover { background: white; transform: translateY(-2px); }
+    .reveal-button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    .reveal-button span { font-size: 18px; }
+
+    .wish-section {
+      padding: clamp(52px, 8vw, 100px) 24px clamp(64px, 9vw, 112px);
+      background: var(--cream);
+    }
+    .wish-inner { max-width: 760px; margin: auto; text-align: center; }
+    .wish-label {
+      margin: 0 0 16px;
+      color: #b64c3c;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .wish-inner h2 {
+      margin: 0;
+      color: var(--forest);
+      font: 600 clamp(32px, 5vw, 54px)/1.12 var(--serif);
+      text-wrap: balance;
+    }
+    .wish-copy {
+      max-width: 590px;
+      margin: 18px auto 0;
+      color: #46534d;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .birthday-note {
+      display: none;
+      max-width: 590px;
+      margin: 28px auto 0;
+      padding: 23px 24px;
+      border-left: 3px solid var(--coral);
+      background: #f0f5e8;
+      text-align: left;
+      animation: note-arrive 380ms ease-out both;
+    }
+    .birthday-note.is-open { display: block; }
+    .birthday-note p { margin: 0; font-size: 16px; line-height: 1.8; }
+    .signature { margin-top: 12px !important; color: var(--forest); font-weight: 700; }
+    footer {
+      padding: 18px 24px 24px;
+      color: #66746a;
+      text-align: center;
+      font-size: 12px;
     }
 
-    /* Three.js Canvas Layer */
-    #three-container {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #three-container.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    @keyframes photo-arrive { from { transform: scale(1.035); } to { transform: scale(1); } }
+    @keyframes copy-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes note-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Background Night Sky & Shooting Stars Canvas */
-    #sky-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 5;
-      pointer-events: none;
+    @media (max-width: 600px) {
+      .topbar { min-height: 58px; }
+      .top-note { font-size: 12px; }
+      .hero { min-height: 72svh; min-height: 72vh; }
+      .hero-photo { object-position: 58% center; }
+      .hero::after { background: linear-gradient(0deg, rgb(9 35 29 / 82%) 0%, rgb(9 35 29 / 35%) 55%, rgb(9 35 29 / 4%) 100%); }
+      .hero-copy { padding: 34px 24px 48px; }
+      .eyebrow { margin-bottom: 15px; }
+      .hero-copy > p:not(.eyebrow) { margin: 16px 0 23px; }
     }
-
-    /* Foreground FX Canvas (Hearts, Confetti, Sparkles, Floating Texts) */
-    #fx-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 60;
-      pointer-events: none;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
-<body class="relative select-none overflow-hidden text-[#594134]">
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">✿</span><span>A little birthday magic</span></div>
+    <div class="top-note">Made just for Surmeet</div>
+  </header>
 
-  <!-- Background Night Sky / Aurora / Shooting Stars / Sakura Petals Canvas -->
-  <canvas id="sky-canvas"></canvas>
-
-  <!-- Three.js 3D Kawaii Panda World Container -->
-  <div id="three-container"></div>
-
-  <!-- Foreground 2D FX Canvas (Hearts, Confetti, Wish Texts) -->
-  <canvas id="fx-canvas"></canvas>
-
-  <!-- Top Controls: Interactive Hints & Sound Toggle -->
-  <div class="fixed top-3.5 right-3.5 left-3.5 z-50 flex items-center justify-between pointer-events-none">
-    <!-- Left Pill: Interactive Panda Head-Pat / Sky Wish Hint -->
-    <div id="interactive-hint-pill" class="hidden beige-card px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold text-[#7c5846] items-center gap-1.5 shadow-md pointer-events-auto transition-all duration-500">
-      <span id="hint-pill-icon">🐼</span>
-      <span id="hint-pill-text">Tip: Tap Panda's head to pet him! 💕</span>
-    </div>
-    <div></div>
-
-    <!-- Right Controls -->
-    <div class="flex items-center gap-2 pointer-events-auto">
-      <div id="star-wish-hint" class="hidden night-card px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs text-pink-200 font-semibold tracking-wide items-center gap-1.5 shadow-lg">
-        <span>🌠</span>
-        <span>Tap the sky to make a wish!</span>
-      </div>
-
-      <button id="sound-toggle" class="beige-card w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-[#7c5846] hover:scale-105 active:scale-95 transition shadow-md cursor-pointer" title="Toggle Sound">
-        <svg id="sound-on-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-        </svg>
-        <svg id="sound-off-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       STAGE 1: "DO YOU LIKE ME?" SCREEN
-       ========================================== -->
-  <section id="stage-1" class="fixed inset-0 z-30 flex items-center justify-center p-4 transition-all duration-700">
-    <div id="like-card" class="beige-card relative max-w-md w-full rounded-[2rem] p-7 sm:p-9 text-center transition-all duration-500">
-
-      <!-- Interactive Kawaii Panda Avatar (Eyes follow cursor & react to Yes/No!) -->
-      <div class="mx-auto mb-4 w-28 h-28 rounded-full bg-[#fdf3e7] border-2 border-[#e6cfb8] flex items-center justify-center shadow-inner animate-float relative">
-        <svg id="stage1-panda-svg" class="w-22 h-22 overflow-visible" viewBox="0 0 100 100">
-          <!-- Cute Wiggling Ears -->
-          <circle cx="22" cy="24" r="14" fill="#231f20" />
-          <circle cx="78" cy="24" r="14" fill="#231f20" />
-          <circle cx="22" cy="24" r="7" fill="#f497b6" />
-          <circle cx="78" cy="24" r="7" fill="#f497b6" />
-          <!-- Tiny Pastel Crown on Head -->
-          <polygon points="38,17 44,7 50,14 56,7 62,17" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.5" stroke-linejoin="round" />
-          <!-- ChubbyChibi Cheeks & Head -->
-          <ellipse cx="50" cy="55" rx="36" ry="31" fill="#fffdf9" stroke="#e2d0be" stroke-width="2.2" />
-          <!-- Eye Patches -->
-          <ellipse cx="35" cy="51" rx="10" ry="12" transform="rotate(-10 35 51)" fill="#231f20" />
-          <ellipse cx="65" cy="51" rx="10" ry="12" transform="rotate(10 65 51)" fill="#231f20" />
-          <!-- Tracking Pupils Group -->
-          <g id="svg-pupils">
-            <circle cx="36" cy="49" r="4.3" fill="#ffffff" />
-            <circle cx="64" cy="49" r="4.3" fill="#ffffff" />
-            <circle cx="37.8" cy="47.2" r="1.6" fill="#ffc2d4" />
-            <circle cx="65.8" cy="47.2" r="1.6" fill="#ffc2d4" />
-          </g>
-          <!-- Rosy Blush Cheeks -->
-          <ellipse cx="23" cy="61" rx="7" ry="4" fill="#ff8da6" opacity="0.8" />
-          <ellipse cx="77" cy="61" rx="7" ry="4" fill="#ff8da6" opacity="0.8" />
-          <!-- Cute Button Nose & Cat 'w' Mouth -->
-          <ellipse cx="50" cy="57" rx="4.5" ry="3.2" fill="#231f20" />
-          <path id="svg-mouth" d="M43 62 Q46.5 66 50 62 Q53.5 66 57 62" fill="none" stroke="#231f20" stroke-width="2.4" stroke-linecap="round" />
-          <!-- Cute Red Bow Tie -->
-          <polygon points="42,84 50,87 42,90" fill="#e11d48" />
-          <polygon points="58,84 50,87 58,90" fill="#e11d48" />
-          <circle cx="50" cy="87" r="2.8" fill="#be123c" />
-        </svg>
-        <span class="absolute -top-1 -right-1 text-xl animate-bounce">💖</span>
-      </div>
-
-      <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-[#f7e5d4] text-[#9c6647] mb-2 shadow-sm">
-        <span>🌸 Special Delivery for Surmeet Kaur 🌸</span>
-      </span>
-
-      <h1 id="question-title" class="font-serif-title text-3xl sm:text-4xl font-bold text-[#4a3427] mb-2.5 leading-tight">
-        Do you like me?
-      </h1>
-
-      <p id="question-subtitle" class="text-sm sm:text-base text-[#826352] mb-6 min-h-[2.6rem] flex items-center justify-center px-2">
-        Before we unlock your birthday magic, answer honestly... 🥺✨
-      </p>
-
-      <!-- Main Yes / No Buttons Container -->
-      <div id="choice-buttons-area" class="flex flex-wrap items-center justify-center gap-4 relative min-h-[64px]">
-        <button id="btn-yes-main" onclick="handleYesClick()" class="btn-cute px-8 py-3.5 rounded-2xl font-bold text-lg tracking-wide flex items-center gap-2 cursor-pointer">
-          <span>Yes!</span>
-          <span class="text-xl">💖</span>
-        </button>
-
-        <button id="btn-no-main" onclick="handleNoClick()" class="btn-beige px-7 py-3.5 rounded-2xl font-bold text-lg tracking-wide cursor-pointer">
-          No 🙈
+  <main>
+    <section class="hero" aria-labelledby="birthday-title">
+      <img class="hero-photo" src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="A giant panda enjoying a leafy bamboo snack" fetchpriority="high">
+      <div class="hero-copy">
+        <p class="eyebrow">A special delivery for Surmeet Kaur</p>
+        <h1 id="birthday-title">Happy Birthday, Surmeet!</h1>
+        <p>Today deserves a little extra magic, a lot of smiles, and one very adorable panda.</p>
+        <button class="reveal-button" id="reveal-button" type="button" aria-controls="birthday-note" aria-expanded="false">
+          Open your birthday note <span aria-hidden="true">↗</span>
         </button>
       </div>
+    </section>
 
-      <!-- Dynamic Extra Options List (Appears when she clicks No - every single option leads to Yes!) -->
-      <div id="extra-yes-options" class="hidden mt-5 pt-4 border-t border-[#ebd9c8] flex-col gap-2.5">
-        <p id="extra-options-label" class="text-xs font-bold uppercase tracking-wider text-[#b57358] mb-1">
-          Wait! Pick one of these much better options instead:
-        </p>
-        <div id="extra-buttons-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       STAGE 2: BALLOON POP CHALLENGE
-       ========================================== -->
-  <section id="stage-2" class="fixed inset-0 z-30 hidden flex-col justify-between p-4 sm:p-6 pointer-events-none">
-    <!-- Top HUD Bar -->
-    <div class="w-full max-w-lg mx-auto beige-card rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-4 pointer-events-auto shadow-lg">
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-xl bg-[#fce4ec] flex items-center justify-center text-2xl shadow-sm">
-          🎈
-        </div>
-        <div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-[#9c745b]">Popped Balloons</div>
-          <div class="text-xl sm:text-2xl font-bold text-[#4a3427]">
-            <span id="balloon-score" class="text-[#dc4c73]">0</span>
-            <span class="text-sm font-normal text-[#8c6d5c]">/ 10 min</span>
-          </div>
+    <section class="wish-section" aria-labelledby="wish-title">
+      <div class="wish-inner">
+        <p class="wish-label">Your day, your little moment</p>
+        <h2 id="wish-title">Make a wish, birthday girl.</h2>
+        <p class="wish-copy">May the year ahead bring you lovely surprises, bright new adventures, and plenty of reasons to smile.</p>
+        <div class="birthday-note" id="birthday-note" aria-live="polite" hidden>
+          <p>I genuinely like you, and I just wanted to say it. I hope your birthday is as wonderful and lovely as you are. You deserve all the happiness in the world. 💖</p>
+          <p class="signature">Happy Birthday! ✨</p>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Progress Bar -->
-      <div class="hidden sm:block flex-1 max-w-[150px]">
-        <div class="w-full h-3 bg-[#ede0d4] rounded-full overflow-hidden p-0.5">
-          <div id="balloon-progress" class="h-full bg-gradient-to-r from-[#f47296] to-[#f59e0b] rounded-full transition-all duration-200" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- Countdown Box -->
-      <div class="text-right px-3.5 py-1.5 rounded-xl bg-[#f7ede2] border border-[#e6d2be]">
-        <div class="text-[10px] font-bold uppercase tracking-wider text-[#9c745b]">Time Left</div>
-        <div id="balloon-timer" class="text-xl sm:text-2xl font-bold text-[#4a3427] tabular-nums">10.0s</div>
-      </div>
-    </div>
-
-    <!-- Active Balloons Spawn Layer -->
-    <div id="balloon-arena" class="fixed inset-0 z-20 overflow-hidden pointer-events-auto"></div>
-
-    <!-- Challenge Intro / Retry Modal -->
-    <div id="balloon-modal-wrap" class="fixed inset-0 z-40 flex items-center justify-center p-4 bg-black/15 backdrop-blur-[2px] pointer-events-auto">
-      <div class="beige-card max-w-md w-full rounded-[2rem] p-7 text-center transform transition-all">
-        <div id="balloon-modal-emoji" class="text-5xl mb-3 animate-bounce">🎈✨</div>
-        <h2 id="balloon-modal-title" class="font-serif-title text-2xl sm:text-3xl font-bold text-[#4a3427] mb-2">
-          Birthday Balloon Challenge!
-        </h2>
-        <p id="balloon-modal-desc" class="text-sm sm:text-base text-[#7d5f4f] mb-6 leading-relaxed">
-          Quick challenge before your surprise arrives! Tap on the screen to pop at least <strong class="text-[#dc4c73]">10 balloons in 7–10 seconds</strong> (watch out for golden heart balloons!) to unlock the next page!
-        </p>
-        <button id="balloon-start-btn" onclick="startBalloonGame()" class="btn-cute w-full py-3.5 rounded-2xl font-bold text-lg tracking-wide cursor-pointer">
-          Start Popping! 🎯
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       STAGES 3, 4, 5, 6: 3D KAWAII PANDA & NIGHT SKY UI OVERLAYS
-       ========================================== -->
-  <section id="stage-3d-ui" class="fixed inset-0 z-30 hidden flex-col justify-between p-4 sm:p-6 pointer-events-none">
-
-    <!-- Top Message Area (Walking caption / Heartfelt Birthday Message) -->
-    <div class="w-full max-w-xl mx-auto mt-10 sm:mt-8 flex flex-col items-center text-center">
-
-      <!-- Stage 3 Walking Status Pill -->
-      <div id="panda-status-pill" class="beige-card px-5 py-2.5 rounded-full text-xs sm:text-base font-bold text-[#5e4334] shadow-md transition-all duration-500 flex items-center gap-2.5">
-        <span class="text-xl animate-bounce">🐼</span>
-        <span id="panda-status-text">Wait... look who's waddling over hiding something behind his back!</span>
-      </div>
-
-      <!-- Stage 5 Night Sky Heartfelt Birthday Card for Surmeet Kaur -->
-      <div id="night-birthday-card" class="night-card hidden w-full rounded-[1.75rem] p-4 sm:p-6 text-center transition-all duration-1000 transform translate-y-4 opacity-0 pointer-events-auto">
-        <div class="inline-flex items-center gap-1.5 px-3.5 py-0.5 rounded-full bg-pink-500/20 border border-pink-300/30 text-pink-200 text-[11px] font-semibold tracking-widest uppercase mb-2">
-          <span>🌠 Written in the Stars for You 🌠</span>
-        </div>
-
-        <h1 class="font-serif-title text-2xl sm:text-4xl font-bold shimmer-text mb-2 leading-tight">
-          Happy Birthday Surmeet Kaur! ✨
-        </h1>
-
-        <p class="text-pink-100/95 text-xs sm:text-base leading-relaxed font-medium max-w-lg mx-auto mb-3">
-          "I genuinely like you, just wanted to say this... and a very, very Happy Birthday to you! 💖"
-        </p>
-
-        <!-- Interactive Keepsake Compliment Carousel -->
-        <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-2 border-t border-white/10">
-          <span onclick="spawnComplimentSparkle(event, 'Surmeet = Effortlessly Cute 🌸')" class="compliment-pill cursor-pointer hover:scale-105 transition px-2.5 py-1 rounded-full bg-white/10 hover:bg-pink-500/30 text-pink-200 text-[11px] font-semibold" style="animation-delay: 0s;">🌸 Effortlessly Cute</span>
-          <span onclick="spawnComplimentSparkle(event, 'Your smile lights up the room ✨')" class="compliment-pill cursor-pointer hover:scale-105 transition px-2.5 py-1 rounded-full bg-white/10 hover:bg-amber-500/30 text-amber-200 text-[11px] font-semibold" style="animation-delay: 0.4s;">✨ Brightest Smile</span>
-          <span onclick="spawnComplimentSparkle(event, 'Truly one of a kind 💖')" class="compliment-pill cursor-pointer hover:scale-105 transition px-2.5 py-1 rounded-full bg-white/10 hover:bg-purple-500/30 text-purple-200 text-[11px] font-semibold" style="animation-delay: 0.8s;">💖 Truly Special</span>
-          <span onclick="spawnComplimentSparkle(event, 'May all your wishes come true 🌙')" class="compliment-pill cursor-pointer hover:scale-105 transition px-2.5 py-1 rounded-full bg-white/10 hover:bg-sky-500/30 text-sky-200 text-[11px] font-semibold" style="animation-delay: 1.2s;">🌙 One in a Million</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Center Interactive Target Overlay (Panda Speech Bubble, Keepsake Note & Kiss Stamp) -->
-    <div class="flex-1 flex flex-col items-center justify-center relative">
-
-      <!-- Cute Floating Speech Bubble when Panda is Petted -->
-      <div id="panda-speech-bubble" class="hidden beige-card px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold text-[#d946ef] shadow-lg mb-40 transform transition-all duration-300">
-        Hehe, that tickles Surmeet! 🥰🐼
-      </div>
-
-      <!-- Floating Secret Locket Note when Gift Opens -->
-      <div id="gift-keepsake-note" class="hidden night-card max-w-xs sm:max-w-sm rounded-2xl p-4 text-center mb-3 transform transition-all duration-500 scale-90 opacity-0">
-        <div class="text-xs font-bold uppercase tracking-widest text-amber-300 mb-1">💝 Panda's Golden Locket Note</div>
-        <p class="text-pink-100 text-xs sm:text-sm font-medium italic">
-          "Inside this box is a lifetime supply of smiles, warm hugs, and someone who genuinely adores you. Now lean close..."
-        </p>
-      </div>
-
-      <!-- Fullscreen Warm Blush Mist on Kiss -->
-      <div id="kiss-screen-mist" class="fixed inset-0 pointer-events-none hidden"></div>
-
-      <!-- Floating Kiss Stamp Effect -->
-      <div id="kiss-overlay" class="hidden flex-col items-center justify-center pointer-events-none z-40">
-        <div class="text-7xl sm:text-8xl drop-shadow-[0_10px_35px_rgba(244,114,182,0.95)] select-none">💋</div>
-        <span class="mt-2.5 px-5 py-1.5 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-sm sm:text-lg shadow-[0_0_25px_rgba(244,114,182,0.85)] border border-pink-200/50">
-          Mwah!! Happy Birthday Surmeet! 💖🐼
-        </span>
-      </div>
-    </div>
-
-    <!-- Bottom Interactive Controls (Stage 4 Blow Candles / Stage 6 Tap Gift) -->
-    <div class="w-full max-w-md mx-auto mb-1 sm:mb-3 flex flex-col items-center">
-
-      <!-- Stage 4: Blow Out the Candles Panel -->
-      <div id="candle-blow-panel" class="beige-card hidden w-full rounded-3xl p-4 sm:p-5 text-center pointer-events-auto transition-all duration-500">
-        <div class="flex items-center justify-between mb-1.5">
-          <span class="text-xs font-bold uppercase tracking-wider text-[#a6765b] flex items-center gap-1.5">
-            <span>🎂 Close Your Eyes & Make a Wish!</span>
-            <span id="mic-active-indicator" class="hidden px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px]">🎤 Mic Ready</span>
-          </span>
-          <span id="candle-timer-badge" class="px-2.5 py-0.5 rounded-full bg-[#fce4ec] text-[#dc4c73] font-bold text-xs tabular-nums">
-            10s
-          </span>
-        </div>
-
-        <h3 class="font-serif-title text-lg sm:text-2xl font-bold text-[#4a3427] mb-1">
-          Blow out your candles, Surmeet! 🕯️✨
-        </h3>
-        <p class="text-xs sm:text-sm text-[#7d5f4f] mb-3">
-          Blow gently into your mic or tap below—candles blow out in <span id="candle-seconds-inline" class="font-bold text-[#dc4c73]">10</span>s!
-        </p>
-
-        <!-- Countdown Bar -->
-        <div class="w-full h-2.5 bg-[#ebd9c8] rounded-full overflow-hidden mb-3 p-0.5">
-          <div id="candle-progress-bar" class="h-full bg-gradient-to-r from-[#f59e0b] via-[#f47296] to-[#8b5cf6] rounded-full transition-all duration-150" style="width: 100%"></div>
-        </div>
-
-        <button id="btn-blow-action" onclick="boostBlowCandles()" class="btn-cute w-full py-3 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 cursor-pointer">
-          <span>🌬️ Tap (or Blow) to Blow Out Candles</span>
-        </button>
-      </div>
-
-      <!-- Stage 6: Tap the Gift Panel -->
-      <div id="gift-tap-panel" class="night-card hidden w-full rounded-3xl p-4 sm:p-5 text-center pointer-events-auto transition-all duration-500">
-        <p class="text-pink-200 text-xs sm:text-sm font-medium mb-2.5">
-          🐼 Cutie Panda brought a special wrapped birthday gift just for you!
-        </p>
-        <button id="btn-open-gift" onclick="triggerGiftOpen()" class="btn-cute pulse-glow w-full py-3.5 rounded-2xl font-bold text-base sm:text-lg flex items-center justify-center gap-2 cursor-pointer">
-          <span class="text-2xl animate-bounce">🎁</span>
-          <span>Tap to Unwrap Your Gift! ✨</span>
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================
-       FINALE: LIGHTS SHUT DOWN SCREEN
-       ========================================== -->
-  <section id="stage-lights-out" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-6 text-center bg-[#020206]/95 opacity-0 transition-opacity duration-[2200ms] pointer-events-auto">
-    <div class="max-w-md w-full flex flex-col items-center">
-      <!-- Soft glowing moon/panda keepsake emblem -->
-      <div class="w-20 h-20 rounded-full bg-white/5 border border-pink-300/25 flex items-center justify-center text-4xl mb-5 shadow-[0_0_55px_rgba(244,114,182,0.4)] animate-float">
-        🌙
-      </div>
-
-      <span class="text-xs uppercase tracking-[0.25em] text-pink-300/70 font-semibold mb-2">
-        Lights Out • Sweetest Dreams
-      </span>
-
-      <h2 class="font-serif-title text-2xl sm:text-4xl font-bold text-pink-100/95 mb-3 tracking-wide">
-        Happy Birthday, Surmeet Kaur ❤️
-      </h2>
-
-      <p class="text-slate-300/85 text-sm sm:text-base leading-relaxed mb-6 max-w-sm">
-        May every shooting star tonight bring you endless happiness, magic, and smiles. Goodnight & have the most unforgettable birthday ever! ✨🐼💖
-      </p>
-
-      <!-- Keepsake Memory Ticket -->
-      <div class="w-full rounded-2xl bg-white/5 border border-pink-200/15 p-3.5 mb-7 text-xs text-pink-200/80 flex items-center justify-around">
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-400">Birthday Girl</div>
-          <div class="font-bold text-pink-100">Surmeet Kaur 👑</div>
-        </div>
-        <div class="h-6 w-px bg-white/10"></div>
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-400">Secret Confession</div>
-          <div class="font-bold text-pink-200">I Genuinely Like You 💖</div>
-        </div>
-      </div>
-
-      <button onclick="replayExperience()" class="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-pink-200/25 text-pink-200/95 text-xs sm:text-sm font-semibold tracking-wider uppercase transition transform hover:scale-105 cursor-pointer shadow-lg">
-        ↻ Replay Your Birthday Surprise
-      </button>
-    </div>
-  </section>
+  <footer>Made with a little extra care for Surmeet Kaur ✨</footer>
 
   <script>
-    /* ==========================================================================
-       SMOOTH SPRING & DAMPING MATH UTILITIES (60FPS FRAME-RATE INDEPENDENT)
-       ========================================================================== */
-    function damp(current, target, lambda, dt) {
-      return THREE.MathUtils.lerp(current, target, 1 - Math.exp(-lambda * dt));
-    }
+    const revealButton = document.getElementById('reveal-button');
+    const birthdayNote = document.getElementById('birthday-note');
 
-    class SpringValue {
-      constructor(initial = 0, stiffness = 140, damping = 14) {
-        this.value = initial;
-        this.target = initial;
-        this.velocity = 0;
-        this.stiffness = stiffness;
-        this.damping = damping;
-      }
-      update(dt) {
-        const force = (this.target - this.value) * this.stiffness;
-        this.velocity = (this.velocity + force * dt) * Math.exp(-this.damping * dt);
-        this.value += this.velocity * dt;
-        return this.value;
-      }
-      impulse(vel) {
-        this.velocity += vel;
-      }
-    }
-
-    /* ==========================================================================
-       WEB AUDIO SYNTHESIZER (Cute Chimes, Music Box, Pop, Giggle & Kiss SFX)
-       ========================================================================== */
-    class SoundEffects {
-      constructor() {
-        this.ctx = null;
-        this.enabled = true;
-      }
-
-      init() {
-        if (!this.ctx) {
-          const AudioCtx = window.AudioContext || window.webkitAudioContext;
-          if (AudioCtx) this.ctx = new AudioCtx();
-        }
-        if (this.ctx && this.ctx.state === 'suspended') {
-          this.ctx.resume();
-        }
-      }
-
-      playTone(freq, type = 'sine', duration = 0.18, vol = 0.15, slideFreq = null) {
-        if (!this.enabled) return;
-        this.init();
-        if (!this.ctx) return;
-
-        const now = this.ctx.currentTime;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, now);
-        if (slideFreq) {
-          osc.frequency.exponentialRampToValueAtTime(slideFreq, now + duration);
-        }
-
-        gain.gain.setValueAtTime(0.001, now);
-        gain.gain.linearRampToValueAtTime(vol, now + 0.018);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-        osc.start(now);
-        osc.stop(now + duration + 0.02);
-      }
-
-      playBoing() {
-        this.playTone(340, 'triangle', 0.22, 0.15, 175);
-      }
-
-      playPandaGiggle() {
-        const notes = [620, 780, 680, 920];
-        notes.forEach((n, i) => {
-          setTimeout(() => this.playTone(n, 'sine', 0.12, 0.12, n * 1.15), i * 65);
-        });
-      }
-
-      playYesChime() {
-        const notes = [523.25, 659.25, 783.99, 1046.5, 1318.5];
-        notes.forEach((n, idx) => {
-          setTimeout(() => this.playTone(n, 'sine', 0.36, 0.15), idx * 70);
-        });
-      }
-
-      playShootingStarTwinkle() {
-        const base = 920 + Math.random() * 450;
-        this.playTone(base, 'sine', 0.28, 0.07, base * 1.45);
-        setTimeout(() => this.playTone(base * 1.25, 'triangle', 0.22, 0.05), 55);
-      }
-
-      playBalloonPop(combo = 1, isGolden = false) {
-        if (!this.enabled) return;
-        this.init();
-        if (!this.ctx) return;
-        const baseFreq = 420 + Math.min(combo, 15) * 42;
-        this.playTone(baseFreq, 'sine', 0.14, 0.2, baseFreq * 1.65);
-        if (isGolden) {
-          setTimeout(() => this.playTone(880, 'triangle', 0.25, 0.14, 1320), 60);
-        }
-      }
-
-      playStep() {
-        this.playTone(150, 'sine', 0.075, 0.045, 95);
-      }
-
-      playCakeReveal() {
-        const chord = [440, 554.37, 659.25, 880, 1108.73];
-        chord.forEach((n, i) => {
-          setTimeout(() => this.playTone(n, 'triangle', 0.45, 0.12), i * 80);
-        });
-      }
-
-      playBlowWind() {
-        if (!this.enabled) return;
-        this.init();
-        if (!this.ctx) return;
-
-        const bufferSize = this.ctx.sampleRate * 0.35;
-        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-          data[i] = Math.random() * 2 - 1;
-        }
-
-        const noise = this.ctx.createBufferSource();
-        noise.buffer = buffer;
-
-        const filter = this.ctx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.value = 600;
-
-        const gain = this.ctx.createGain();
-        const now = this.ctx.currentTime;
-        gain.gain.setValueAtTime(0.01, now);
-        gain.gain.linearRampToValueAtTime(0.13, now + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(this.ctx.destination);
-        noise.start(now);
-      }
-
-      playBirthdayMelody() {
-        const melody = [
-          { f: 392, d: 0.28, t: 0 },        // G4
-          { f: 392, d: 0.22, t: 320 },      // G4
-          { f: 440, d: 0.45, t: 580 },      // A4
-          { f: 392, d: 0.45, t: 1080 },     // G4
-          { f: 523.25, d: 0.45, t: 1580 },  // C5
-          { f: 493.88, d: 0.85, t: 2080 },  // B4
-          { f: 392, d: 0.28, t: 3100 },     // G4
-          { f: 392, d: 0.22, t: 3420 },     // G4
-          { f: 440, d: 0.45, t: 3680 },     // A4
-          { f: 392, d: 0.45, t: 4180 },     // G4
-          { f: 587.33, d: 0.45, t: 4680 },  // D5
-          { f: 523.25, d: 0.95, t: 5180 }   // C5
-        ];
-        melody.forEach(note => {
-          setTimeout(() => {
-            this.playTone(note.f, 'sine', note.d + 0.28, 0.14);
-            this.playTone(note.f * 2, 'triangle', note.d, 0.045);
-          }, note.t);
-        });
-      }
-
-      playKiss() {
-        this.playTone(580, 'sine', 0.12, 0.22, 1020);
-        setTimeout(() => this.playTone(920, 'sine', 0.34, 0.24, 1440), 110);
-      }
-
-      playLightSwitch() {
-        this.playTone(250, 'triangle', 0.04, 0.18, 90);
-        setTimeout(() => this.playTone(120, 'sine', 0.07, 0.15, 60), 45);
-      }
-    }
-
-    const sfx = new SoundEffects();
-
-    document.getElementById('sound-toggle').addEventListener('click', () => {
-      sfx.enabled = !sfx.enabled;
-      document.getElementById('sound-on-icon').classList.toggle('hidden', !sfx.enabled);
-      document.getElementById('sound-off-icon').classList.toggle('hidden', sfx.enabled);
+    revealButton.addEventListener('click', () => {
+      birthdayNote.hidden = false;
+      birthdayNote.classList.add('is-open');
+      revealButton.setAttribute('aria-expanded', 'true');
+      revealButton.textContent = 'Your note is open';
+      birthdayNote.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-
-    /* ==========================================================================
-       STAGE 1 LOGIC: "DO YOU LIKE ME?" WITH PLAYFUL OPTIONS THAT LEAD TO YES
-       ========================================================================== */
-    let noClickCount = 0;
-
-    // Make Stage 1 SVG Panda eyes follow the cursor/finger!
-    window.addEventListener('pointermove', (e) => {
-      const pupils = document.getElementById('svg-pupils');
-      if (!pupils) return;
-      const dx = (e.clientX / window.innerWidth - 0.5) * 4.5;
-      const dy = (e.clientY / window.innerHeight - 0.5) * 3.5;
-      pupils.setAttribute('transform', `translate(${dx.toFixed(2)}, ${dy.toFixed(2)})`);
-    });
-
-    const noPlayfulStages = [
-      {
-        title: "Wait... are you sure?! 🥺",
-        subtitle: "Look at Panda's puppy eyes! Let me give you some better choices...",
-        yesScale: 1.14,
-        noText: "Still No 😜",
-        extraOptions: [
-          "Yes, obviously! 💖",
-          "Okay fine, YES! 🌸"
-        ]
-      },
-      {
-        title: "Error 404: 'No' Not Accepted! 🚨",
-        subtitle: "On Surmeet Kaur's birthday, only cute & happy answers are allowed!",
-        yesScale: 1.28,
-        noText: "Hmm... 🤔",
-        extraOptions: [
-          "Yes, 1000% Yes! 🥰",
-          "Secretly Yes! 🙈",
-          "Definitely Yes! ✨",
-          "Yes, unlock my surprise! 🎂"
-        ]
-      },
-      {
-        title: "Resistance is Futile! 🐼💘",
-        subtitle: "Every button on this screen has officially joined Team YES!",
-        yesScale: 1.38,
-        noText: "Yes in Disguise! 💖",
-        convertNoToYes: true,
-        extraOptions: [
-          "YESSS! 💖✨",
-          "Of course I like you! 🥰",
-          "Yes (Best Decision Ever) 👑",
-          "Take me to my surprise! 🎈"
-        ]
-      }
-    ];
-
-    function handleNoClick() {
-      sfx.playBoing();
-      const stageData = noPlayfulStages[Math.min(noClickCount, noPlayfulStages.length - 1)];
-      noClickCount++;
-
-      document.getElementById('question-title').textContent = stageData.title;
-      document.getElementById('question-subtitle').textContent = stageData.subtitle;
-
-      // Change SVG mouth to cute pleading wavy mouth
-      const mouth = document.getElementById('svg-mouth');
-      if (mouth) {
-        mouth.setAttribute('d', 'M44 64 Q50 60 56 64');
-      }
-
-      const yesBtn = document.getElementById('btn-yes-main');
-      yesBtn.style.transform = `scale(${stageData.yesScale})`;
-
-      const noBtn = document.getElementById('btn-no-main');
-      noBtn.textContent = stageData.noText;
-
-      if (stageData.convertNoToYes) {
-        noBtn.className = "btn-cute px-7 py-3.5 rounded-2xl font-bold text-lg tracking-wide cursor-pointer";
-        noBtn.onclick = handleYesClick;
-      } else {
-        const offsetX = (Math.random() - 0.5) * 55;
-        const offsetY = (Math.random() - 0.5) * 24;
-        noBtn.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.9)`;
-      }
-
-      const extraWrap = document.getElementById('extra-yes-options');
-      const extraGrid = document.getElementById('extra-buttons-grid');
-      extraWrap.classList.remove('hidden');
-      extraWrap.classList.add('flex');
-      extraGrid.innerHTML = '';
-
-      stageData.extraOptions.forEach(optText => {
-        const btn = document.createElement('button');
-        btn.className = "w-full py-2.5 px-4 rounded-xl bg-[#fce4ec] hover:bg-[#f8bbd0] border border-[#f48fb1] text-[#ad1457] font-bold text-sm transition transform hover:scale-[1.03] active:scale-95 cursor-pointer shadow-sm";
-        btn.textContent = optText;
-        btn.onclick = handleYesClick;
-        extraGrid.appendChild(btn);
-      });
-    }
-
-    function handleYesClick() {
-      sfx.playYesChime();
-      spawnBurst(window.innerWidth / 2, window.innerHeight / 2, ['#f47296', '#f43f5e', '#fb7185', '#fde047'], 40, true);
-      spawnFloatingText(window.innerWidth / 2, window.innerHeight * 0.42, "Yay!! I knew it! 💖🐼", "#e11d48");
-
-      const stage1 = document.getElementById('stage-1');
-      stage1.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-
-      setTimeout(() => {
-        stage1.classList.add('hidden');
-        const stage2 = document.getElementById('stage-2');
-        stage2.classList.remove('hidden');
-        stage2.classList.add('flex');
-      }, 550);
-    }
-
-    /* ==========================================================================
-       STAGE 2 LOGIC: POP 10 BALLOONS IN 7-10 SECONDS CHALLENGE
-       ========================================================================== */
-    let balloonScore = 0;
-    let balloonTimeLeft = 10.0;
-    let balloonGameActive = false;
-    let balloonTimerInterval = null;
-    let balloonSpawnInterval = null;
-
-    const balloonPalette = [
-      { fill: '#f48fb1', shine: '#fce4ec', stroke: '#ec407a' }, // Pastel Pink
-      { fill: '#ce93d8', shine: '#f3e5f5', stroke: '#ab47bc' }, // Lavender
-      { fill: '#ffcc80', shine: '#fff3e0', stroke: '#ffa726' }, // Peach
-      { fill: '#80cbc4', shine: '#e0f2f1', stroke: '#26a69a' }, // Mint
-      { fill: '#ef9a9a', shine: '#ffebee', stroke: '#ef5350' }, // Coral
-      { fill: '#90caf9', shine: '#e3f2fd', stroke: '#42a5f5' }  // Sky Blue
-    ];
-
-    const sweetBalloonTags = [
-      "Cutie! 🌸", "Birthday Queen 👑", "Sweetest Smile ✨", "Pure Magic 💖",
-      "Gorgeous! 🥰", "Lucky Star 🌠", "10/10 Cute 🐼", "Sunshine ☀️"
-    ];
-
-    function startBalloonGame() {
-      sfx.init();
-      sfx.playTone(587.33, 'sine', 0.2, 0.15);
-
-      balloonScore = 0;
-      balloonTimeLeft = 10.0;
-      balloonGameActive = true;
-
-      document.getElementById('balloon-score').textContent = '0';
-      document.getElementById('balloon-progress').style.width = '0%';
-      document.getElementById('balloon-timer').textContent = '10.0s';
-      document.getElementById('balloon-modal-wrap').classList.add('hidden');
-
-      const arena = document.getElementById('balloon-arena');
-      arena.innerHTML = '';
-
-      // Spawn 6 immediate balloons so she can pop right away
-      for (let i = 0; i < 6; i++) {
-        spawnSingleBalloon(true);
-      }
-
-      // Continuous smooth balloon spawning so 10 balloons can easily be popped in < 7 seconds
-      balloonSpawnInterval = setInterval(() => {
-        if (balloonGameActive) spawnSingleBalloon(false);
-      }, 310);
-
-      const startTime = performance.now();
-      balloonTimerInterval = setInterval(() => {
-        if (!balloonGameActive) return;
-        const elapsed = (performance.now() - startTime) / 1000;
-        balloonTimeLeft = Math.max(0, 10.0 - elapsed);
-        document.getElementById('balloon-timer').textContent = balloonTimeLeft.toFixed(1) + 's';
-
-        if (balloonTimeLeft <= 0) {
-          endBalloonGame(balloonScore >= 10);
-        }
-      }, 50);
-    }
-
-    function spawnSingleBalloon(initialSpread = false) {
-      const arena = document.getElementById('balloon-arena');
-      const isGolden = Math.random() < 0.24;
-      const colorObj = isGolden
-        ? { fill: '#fde047', shine: '#fef9c3', stroke: '#eab308' }
-        : balloonPalette[Math.floor(Math.random() * balloonPalette.length)];
-
-      const el = document.createElement('div');
-      el.className = 'balloon-wrapper';
-
-      const size = window.innerWidth < 640 ? (70 + Math.random() * 18) : (80 + Math.random() * 24);
-      const leftPct = 6 + Math.random() * 82;
-      let currentY = initialSpread
-        ? (window.innerHeight * 0.34 + Math.random() * (window.innerHeight * 0.54))
-        : (window.innerHeight + 60);
-
-      const speedY = 2.1 + Math.random() * 2.1;
-      const swayAmp = 0.65 + Math.random() * 1.1;
-      const swaySpeed = 0.022 + Math.random() * 0.02;
-      let phase = Math.random() * Math.PI * 2;
-      let popped = false;
-
-      el.style.width = `${size}px`;
-      el.style.height = `${size * 1.25}px`;
-      el.style.left = `${leftPct}%`;
-      el.style.top = `${currentY}px`;
-
-      el.innerHTML = `
-        <svg viewBox="0 0 80 105" class="w-full h-full overflow-visible drop-shadow-md">
-          <path d="M40 82 Q36 93 43 103" fill="none" stroke="#a68a79" stroke-width="2" stroke-linecap="round"/>
-          <ellipse cx="40" cy="40" rx="34" ry="39" fill="${colorObj.fill}" stroke="${colorObj.stroke}" stroke-width="2"/>
-          <polygon points="36,79 44,79 42,84 38,84" fill="${colorObj.fill}" stroke="${colorObj.stroke}" stroke-width="1.5"/>
-          <ellipse cx="27" cy="26" rx="7" ry="13" transform="rotate(-24 27 26)" fill="${colorObj.shine}" opacity="0.72"/>
-          ${isGolden ? '<text x="40" y="47" text-anchor="middle" font-size="22">💖</text>' : ''}
-        </svg>
-      `;
-
-      const popHandler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (popped || !balloonGameActive) return;
-        popped = true;
-
-        balloonScore++;
-        sfx.playBalloonPop(balloonScore, isGolden);
-
-        const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-
-        spawnBurst(cx, cy, [colorObj.fill, colorObj.stroke, '#ffffff', '#fde047'], isGolden ? 24 : 16, isGolden);
-
-        if (isGolden || balloonScore % 2 === 0) {
-          const tag = sweetBalloonTags[balloonScore % sweetBalloonTags.length];
-          spawnFloatingText(cx, cy - 10, tag, isGolden ? '#d97706' : '#db2777');
-        }
-
-        document.getElementById('balloon-score').textContent = balloonScore;
-        const pct = Math.min(100, (balloonScore / 10) * 100);
-        document.getElementById('balloon-progress').style.width = `${pct}%`;
-
-        el.remove();
-
-        if (balloonScore >= 10) {
-          endBalloonGame(true);
-        }
-      };
-
-      el.addEventListener('pointerdown', popHandler);
-      arena.appendChild(el);
-
-      function moveBalloon() {
-        if (popped || !balloonGameActive) {
-          el.remove();
-          return;
-        }
-        currentY -= speedY;
-        phase += swaySpeed;
-        const offsetX = Math.sin(phase) * 14 * swayAmp;
-        el.style.top = `${currentY}px`;
-        el.style.transform = `translateX(${offsetX}px) rotate(${Math.sin(phase) * 4}deg)`;
-
-        if (currentY < -130) {
-          el.remove();
-        } else {
-          requestAnimationFrame(moveBalloon);
-        }
-      }
-      requestAnimationFrame(moveBalloon);
-    }
-
-    function endBalloonGame(won) {
-      balloonGameActive = false;
-      clearInterval(balloonTimerInterval);
-      clearInterval(balloonSpawnInterval);
-
-      const arena = document.getElementById('balloon-arena');
-      arena.innerHTML = '';
-
-      const modalWrap = document.getElementById('balloon-modal-wrap');
-      const emojiEl = document.getElementById('balloon-modal-emoji');
-      const titleEl = document.getElementById('balloon-modal-title');
-      const descEl = document.getElementById('balloon-modal-desc');
-      const btnEl = document.getElementById('balloon-start-btn');
-
-      modalWrap.classList.remove('hidden');
-
-      if (won) {
-        sfx.playYesChime();
-        spawnBurst(window.innerWidth / 2, window.innerHeight / 2, ['#f47296', '#f59e0b', '#34d399', '#a855f7'], 44, true);
-        const timeTaken = (10.0 - balloonTimeLeft).toFixed(1);
-        emojiEl.textContent = '🎉🐼🎂';
-        titleEl.textContent = 'Yay! Challenge Complete!';
-        descEl.innerHTML = `Lightning fast, Surmeet! You popped <strong>${balloonScore} balloons</strong> in just <strong>${timeTaken} seconds</strong>! Now look closely—someone super cute is waddling over to you...`;
-        btnEl.textContent = 'Bring Out My Surprise! ✨';
-        btnEl.onclick = transitionToStage3Panda;
-      } else {
-        sfx.playBoing();
-        emojiEl.textContent = '🎈🥺';
-        titleEl.textContent = 'Almost There!';
-        descEl.innerHTML = `You popped <strong>${balloonScore}/10 balloons</strong>! Tap quickly on the rising balloons to pop 10 in time! Let's try once more 💪`;
-        btnEl.textContent = 'Try Again! 🎈';
-        btnEl.onclick = startBalloonGame;
-      }
-    }
-
-    /* ==========================================================================
-       2D FOREGROUND PARTICLE FX & VIVID NIGHT SKY SHOOTING STARS + AURORA
-       ========================================================================== */
-    const fxCanvas = document.getElementById('fx-canvas');
-    const fxCtx = fxCanvas.getContext('2d');
-    const skyCanvas = document.getElementById('sky-canvas');
-    const skyCtx = skyCanvas.getContext('2d');
-
-    let fxParticles = [];
-    let floatingTexts = [];
-    let nightModeActive = false;
-    let lightsOutActive = false;
-    let stars = [];
-    let shootingStars = [];
-    let starGlitter = [];
-    let sakuraPetals = [];
-    let heartConstellation = [];
-
-    const skyWishMessages = [
-      "✨ Wish granted for Surmeet!",
-      "💖 Endless happiness & love!",
-      "🌠 May your smile always shine!",
-      "🌸 Best Birthday Ever!",
-      "👑 Queen of the Night Sky!"
-    ];
-    let wishMessageIdx = 0;
-
-    function resizeCanvases() {
-      fxCanvas.width = window.innerWidth;
-      fxCanvas.height = window.innerHeight;
-      skyCanvas.width = window.innerWidth;
-      skyCanvas.height = window.innerHeight;
-      initSkyObjects();
-    }
-
-    function initSkyObjects() {
-      stars = [];
-      const starCount = Math.floor((window.innerWidth * window.innerHeight) / 3200);
-      for (let i = 0; i < starCount; i++) {
-        stars.push({
-          x: Math.random() * skyCanvas.width,
-          y: Math.random() * skyCanvas.height * 0.90,
-          r: Math.random() * 2.1 + 0.4,
-          alpha: Math.random() * Math.PI * 2,
-          twinkleSpeed: 0.016 + Math.random() * 0.04,
-          color: ['#ffffff', '#ffe4ec', '#fef08a', '#bae6fd', '#e9d5ff'][Math.floor(Math.random() * 5)]
-        });
-      }
-
-      // Heart Constellation in the upper sky
-      heartConstellation = [];
-      const cx = skyCanvas.width * (skyCanvas.width < 640 ? 0.82 : 0.85);
-      const cy = skyCanvas.height * 0.22;
-      const scale = skyCanvas.width < 640 ? 3.1 : 4.6;
-      const heartAngles = [0, 0.6, 1.2, 1.8, 2.5, Math.PI, 3.8, 4.5, 5.1, 5.7];
-      heartAngles.forEach(t => {
-        const hx = 16 * Math.pow(Math.sin(t), 3);
-        const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-        heartConstellation.push({
-          x: cx + hx * scale,
-          y: cy + hy * scale
-        });
-      });
-
-      // Soft Sakura Petals / Warm Sparkles for Beige Daytime Theme
-      sakuraPetals = [];
-      for (let i = 0; i < 28; i++) {
-        sakuraPetals.push({
-          x: Math.random() * skyCanvas.width,
-          y: Math.random() * skyCanvas.height,
-          size: 4 + Math.random() * 5,
-          vx: -0.35 + Math.random() * 0.7,
-          vy: 0.45 + Math.random() * 0.65,
-          rot: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.02,
-          alpha: 0.25 + Math.random() * 0.35
-        });
-      }
-    }
-
-    function spawnShootingStar(customX = null, customY = null) {
-      if (!nightModeActive) return;
-      const startX = customX !== null ? customX : (Math.random() * skyCanvas.width * 0.85 + skyCanvas.width * 0.12);
-      const startY = customY !== null ? customY : (Math.random() * skyCanvas.height * 0.44);
-      const angle = (Math.PI / 7) + Math.random() * (Math.PI / 6);
-      const speed = 10.5 + Math.random() * 7.5;
-      const colors = [
-        { head: '#ffffff', mid: '#fbcfe8', tail: 'rgba(244, 114, 182, 0)' },
-        { head: '#ffffff', mid: '#fde68a', tail: 'rgba(251, 191, 36, 0)' },
-        { head: '#ffffff', mid: '#bae6fd', tail: 'rgba(56, 189, 248, 0)' },
-        { head: '#ffffff', mid: '#e9d5ff', tail: 'rgba(192, 132, 252, 0)' }
-      ];
-      const palette = colors[Math.floor(Math.random() * colors.length)];
-
-      shootingStars.push({
-        x: startX,
-        y: startY,
-        vx: -Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        len: 130 + Math.random() * 100,
-        life: 1.0,
-        decay: 0.010 + Math.random() * 0.008,
-        palette
-      });
-    }
-
-    function spawnBurst(x, y, colors = ['#f47296', '#f59e0b', '#a855f7', '#38bdf8', '#fb7185'], count = 24, isHeart = false) {
-      for (let i = 0; i < count; i++) {
-        const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.35;
-        const speed = 2.4 + Math.random() * 6.8;
-        fxParticles.push({
-          x,
-          y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 1.6,
-          gravity: 0.11,
-          size: isHeart ? (10 + Math.random() * 11) : (4 + Math.random() * 5),
-          color: colors[Math.floor(Math.random() * colors.length)],
-          life: 1.0,
-          decay: 0.014 + Math.random() * 0.013,
-          isHeart
-        });
-      }
-    }
-
-    function spawnFloatingText(x, y, text, color = '#f472b6') {
-      floatingTexts.push({
-        x,
-        y,
-        text,
-        color,
-        vy: -1.35,
-        life: 1.0,
-        decay: 0.016
-      });
-    }
-
-    function spawnComplimentSparkle(e, message) {
-      e.stopPropagation();
-      sfx.playShootingStarTwinkle();
-      spawnBurst(e.clientX, e.clientY, ['#f472b6', '#fde047', '#c084fc', '#ffffff'], 18, true);
-      spawnFloatingText(e.clientX, e.clientY - 14, message, '#fef08a');
-    }
-
-    function drawHeartShape(ctx, x, y, size, color, alpha) {
-      ctx.save();
-      ctx.globalAlpha = Math.max(0, alpha);
-      ctx.fillStyle = color;
-      ctx.translate(x, y);
-      ctx.beginPath();
-      const s = size * 0.5;
-      ctx.moveTo(0, s * 0.4);
-      ctx.bezierCurveTo(0, 0, -s, 0, -s, s * 0.5);
-      ctx.bezierCurveTo(-s, s * 1.1, 0, s * 1.4, 0, s * 1.8);
-      ctx.bezierCurveTo(0, s * 1.4, s, s * 1.1, s, s * 0.5);
-      ctx.bezierCurveTo(s, 0, 0, 0, 0, s * 0.4);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    function drawFourPointStar(ctx, x, y, radius, color, alpha) {
-      ctx.save();
-      ctx.globalAlpha = Math.max(0, alpha);
-      ctx.fillStyle = color;
-      ctx.translate(x, y);
-      ctx.beginPath();
-      for (let i = 0; i < 4; i++) {
-        ctx.lineTo(Math.cos((i * Math.PI) / 2) * radius, Math.sin((i * Math.PI) / 2) * radius);
-        ctx.lineTo(Math.cos(((i + 0.5) * Math.PI) / 2) * (radius * 0.32), Math.sin(((i + 0.5) * Math.PI) / 2) * (radius * 0.32));
-      }
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-
-    function update2DCanvases(now) {
-      skyCtx.clearRect(0, 0, skyCanvas.width, skyCanvas.height);
-
-      if (!nightModeActive) {
-        // Warm Beige floating sakura petals
-        sakuraPetals.forEach(p => {
-          p.x += p.vx + Math.sin(now * 0.001 + p.rot) * 0.25;
-          p.y += p.vy;
-          p.rot += p.rotSpeed;
-          if (p.y > skyCanvas.height + 15) {
-            p.y = -15;
-            p.x = Math.random() * skyCanvas.width;
-          }
-          if (p.x < -15) p.x = skyCanvas.width + 15;
-          if (p.x > skyCanvas.width + 15) p.x = -15;
-
-          skyCtx.save();
-          skyCtx.translate(p.x, p.y);
-          skyCtx.rotate(p.rot);
-          skyCtx.globalAlpha = p.alpha;
-          skyCtx.fillStyle = '#f48fb1';
-          skyCtx.beginPath();
-          skyCtx.ellipse(0, 0, p.size, p.size * 0.58, 0, 0, Math.PI * 2);
-          skyCtx.fill();
-          skyCtx.restore();
-        });
-      } else {
-        // 1. Dreamy Aurora Borealis Glow in Night Sky
-        if (!lightsOutActive) {
-          skyCtx.save();
-          const auroraGrad = skyCtx.createLinearGradient(0, 0, skyCanvas.width, skyCanvas.height * 0.45);
-          auroraGrad.addColorStop(0, 'rgba(139, 92, 246, 0.08)');
-          auroraGrad.addColorStop(0.5, 'rgba(244, 114, 182, 0.12)');
-          auroraGrad.addColorStop(1, 'rgba(56, 189, 248, 0.06)');
-          skyCtx.fillStyle = auroraGrad;
-          skyCtx.beginPath();
-          skyCtx.moveTo(0, 0);
-          for (let x = 0; x <= skyCanvas.width; x += 60) {
-            const waveY = skyCanvas.height * 0.25 + Math.sin(x * 0.004 + now * 0.0012) * 38;
-            skyCtx.lineTo(x, waveY);
-          }
-          skyCtx.lineTo(skyCanvas.width, 0);
-          skyCtx.closePath();
-          skyCtx.fill();
-          skyCtx.restore();
-        }
-
-        // 2. Glowing Crescent Moon in Top Left
-        const moonAlpha = lightsOutActive ? 0.3 : 0.94;
-        const moonX = skyCanvas.width < 640 ? 60 : 115;
-        const moonY = skyCanvas.height < 640 ? 80 : 105;
-        skyCtx.save();
-        skyCtx.globalAlpha = moonAlpha;
-        const moonGlow = skyCtx.createRadialGradient(moonX, moonY, 8, moonX, moonY, 85);
-        moonGlow.addColorStop(0, 'rgba(254, 249, 195, 0.48)');
-        moonGlow.addColorStop(0.5, 'rgba(244, 114, 182, 0.14)');
-        moonGlow.addColorStop(1, 'rgba(254, 249, 195, 0)');
-        skyCtx.fillStyle = moonGlow;
-        skyCtx.beginPath();
-        skyCtx.arc(moonX, moonY, 85, 0, Math.PI * 2);
-        skyCtx.fill();
-
-        skyCtx.fillStyle = '#fef9c3';
-        skyCtx.beginPath();
-        skyCtx.arc(moonX, moonY, 25, 0, Math.PI * 2);
-        skyCtx.fill();
-        skyCtx.fillStyle = lightsOutActive ? '#020205' : '#161138';
-        skyCtx.beginPath();
-        skyCtx.arc(moonX + 9, moonY - 6, 22, 0, Math.PI * 2);
-        skyCtx.fill();
-        skyCtx.restore();
-
-        // 3. Heart Constellation in Upper Right Sky
-        if (!lightsOutActive && heartConstellation.length > 0) {
-          skyCtx.save();
-          skyCtx.strokeStyle = 'rgba(251, 207, 232, 0.24)';
-          skyCtx.lineWidth = 1.1;
-          skyCtx.setLineDash([3, 4]);
-          skyCtx.beginPath();
-          heartConstellation.forEach((pt, idx) => {
-            if (idx === 0) skyCtx.moveTo(pt.x, pt.y);
-            else skyCtx.lineTo(pt.x, pt.y);
-          });
-          skyCtx.closePath();
-          skyCtx.stroke();
-
-          heartConstellation.forEach(pt => {
-            drawFourPointStar(skyCtx, pt.x, pt.y, 4.5, '#fbcfe8', 0.8);
-          });
-          skyCtx.restore();
-        }
-
-        // 4. Twinkling Night Stars
-        const starOpacityFactor = lightsOutActive ? 0.45 : 1.0;
-        stars.forEach(s => {
-          s.alpha += s.twinkleSpeed;
-          const op = (0.25 + Math.abs(Math.sin(s.alpha)) * 0.75) * starOpacityFactor;
-          skyCtx.save();
-          skyCtx.globalAlpha = op;
-          skyCtx.fillStyle = s.color;
-          skyCtx.beginPath();
-          skyCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          skyCtx.fill();
-
-          if (s.r > 1.8 && !lightsOutActive && op > 0.72) {
-            drawFourPointStar(skyCtx, s.x, s.y, s.r * 3.3, s.color, op * 0.68);
-          }
-          skyCtx.restore();
-        });
-
-        // 5. Frequent Vivid Shooting Stars with Stardust Trails
-        const spawnChance = lightsOutActive ? 0.025 : 0.085;
-        if (Math.random() < spawnChance) {
-          spawnShootingStar();
-        }
-
-        for (let i = shootingStars.length - 1; i >= 0; i--) {
-          const st = shootingStars[i];
-          st.x += st.vx;
-          st.y += st.vy;
-          st.life -= st.decay;
-
-          if (Math.random() < 0.72) {
-            starGlitter.push({
-              x: st.x + (Math.random() - 0.5) * 6,
-              y: st.y + (Math.random() - 0.5) * 6,
-              vx: (Math.random() - 0.5) * 0.6,
-              vy: (Math.random() - 0.5) * 0.6 + 0.2,
-              r: 1.2 + Math.random() * 2.0,
-              color: st.palette.mid,
-              life: 0.9,
-              decay: 0.024 + Math.random() * 0.018
-            });
-          }
-
-          if (st.life <= 0 || st.x < -220 || st.y > skyCanvas.height + 220) {
-            shootingStars.splice(i, 1);
-            continue;
-          }
-
-          const speedMag = Math.hypot(st.vx, st.vy);
-          const tailX = st.x - (st.vx / speedMag) * st.len;
-          const tailY = st.y - (st.vy / speedMag) * st.len;
-
-          const grad = skyCtx.createLinearGradient(st.x, st.y, tailX, tailY);
-          grad.addColorStop(0, st.palette.head);
-          grad.addColorStop(0.28, st.palette.mid);
-          grad.addColorStop(1, st.palette.tail);
-
-          skyCtx.save();
-          skyCtx.globalAlpha = Math.min(1, st.life * 1.25);
-          skyCtx.strokeStyle = grad;
-          skyCtx.lineWidth = 3.2;
-          skyCtx.lineCap = 'round';
-          skyCtx.shadowBlur = 14;
-          skyCtx.shadowColor = st.palette.mid;
-          skyCtx.beginPath();
-          skyCtx.moveTo(st.x, st.y);
-          skyCtx.lineTo(tailX, tailY);
-          skyCtx.stroke();
-
-          drawFourPointStar(skyCtx, st.x, st.y, 8.2, '#ffffff', st.life);
-          skyCtx.restore();
-        }
-
-        // Update Shooting Star Glitter Trail
-        for (let i = starGlitter.length - 1; i >= 0; i--) {
-          const g = starGlitter[i];
-          g.x += g.vx;
-          g.y += g.vy;
-          g.life -= g.decay;
-          if (g.life <= 0) {
-            starGlitter.splice(i, 1);
-            continue;
-          }
-          skyCtx.save();
-          skyCtx.globalAlpha = g.life;
-          skyCtx.fillStyle = g.color;
-          skyCtx.beginPath();
-          skyCtx.arc(g.x, g.y, g.r, 0, Math.PI * 2);
-          skyCtx.fill();
-          skyCtx.restore();
-        }
-      }
-
-      // Foreground FX Canvas (Particles + Floating Wish Texts)
-      fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
-      for (let i = fxParticles.length - 1; i >= 0; i--) {
-        const p = fxParticles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += p.gravity;
-        p.life -= p.decay;
-
-        if (p.life <= 0) {
-          fxParticles.splice(i, 1);
-          continue;
-        }
-
-        if (p.isHeart) {
-          drawHeartShape(fxCtx, p.x, p.y, p.size, p.color, p.life);
-        } else {
-          fxCtx.save();
-          fxCtx.globalAlpha = Math.max(0, p.life);
-          fxCtx.fillStyle = p.color;
-          fxCtx.beginPath();
-          fxCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          fxCtx.fill();
-          fxCtx.restore();
-        }
-      }
-
-      for (let i = floatingTexts.length - 1; i >= 0; i--) {
-        const ft = floatingTexts[i];
-        ft.y += ft.vy;
-        ft.life -= ft.decay;
-        if (ft.life <= 0) {
-          floatingTexts.splice(i, 1);
-          continue;
-        }
-        fxCtx.save();
-        fxCtx.globalAlpha = Math.max(0, ft.life);
-        fxCtx.font = "bold 15px 'Quicksand', sans-serif";
-        fxCtx.textAlign = "center";
-        fxCtx.shadowBlur = 8;
-        fxCtx.shadowColor = "rgba(0,0,0,0.35)";
-        fxCtx.fillStyle = ft.color;
-        fxCtx.fillText(ft.text, ft.x, ft.y);
-        fxCtx.restore();
-      }
-    }
-
-    window.addEventListener('resize', resizeCanvases);
-    resizeCanvases();
-
-    /* ==========================================================================
-       STAGES 3, 4, 5, 6: THREE.JS ULTRA-KAWAII 3D PANDA, CAKE, LANTERNS & GIFT
-       ========================================================================== */
-    let scene, camera, renderer, raycaster, mouseVec;
-    let pandaGroup, headGroup, leftEarGroup, rightEarGroup, leftLeg, rightLeg, leftArm, rightArm, tailMesh;
-    let leftEyeHappy, rightEyeHappy, leftEyeNormal, rightEyeNormal, leftCheek, rightCheek;
-    let smileMouthMesh, kissLipsMesh, headFloatingHeart;
-    let cakeGroup, candleFlames = [], candleLights = [], smokeParticles3D = [];
-    let giftGroup, giftLidGroup, heartParticles3D = [], skyLanterns3D = [], pawSteps3D = [];
-    let lampSwitchGroup;
-    let floorMesh, floorRingMesh, ambientLight, dirLight, nightSpotLight, rimLight;
-
-    // Spring-Physics Driven Panda Head & Body Reactions (For buttery-smooth motion & head-pats!)
-    const headPitchSpring = new SpringValue(0, 150, 12);
-    const headRollSpring = new SpringValue(0, 140, 11);
-    const headScaleSpring = new SpringValue(1, 180, 13);
-    const bodyBounceSpring = new SpringValue(0, 160, 12);
-    let petHappyTimer = 0;
-
-    // Smooth Camera Targets
-    let camTargetPos = new THREE.Vector3(0, 2.35, 6.4);
-    let camLookTarget = new THREE.Vector3(0, 1.35, 0);
-    let camCurrentLook = new THREE.Vector3(0, 1.35, 0);
-
-    // 3D State Machine
-    let stage3DState = 'IDLE';
-    let walkClock = 0;
-    let revealProgress = 0;
-    let stepSoundCooldown = 0;
-    let blinkTimer = 2.4;
-    let isBlinking = false;
-
-    // Candle Blowing State & Optional Microphone Blow Sensor
-    let candleCountdown = 10.0;
-    let candleTimerInterval = null;
-    let candlesExtinguished = false;
-    let micAnalyser = null;
-    let micDataArray = null;
-    let micStream = null;
-
-    function initThreeJS() {
-      const container = document.getElementById('three-container');
-      scene = new THREE.Scene();
-
-      const isMobile = window.innerWidth < 640;
-      camera = new THREE.PerspectiveCamera(isMobile ? 50 : 42, window.innerWidth / window.innerHeight, 0.1, 100);
-      const startZ = isMobile ? 7.4 : 6.4;
-      camera.position.set(0, 2.35, startZ);
-      camTargetPos.set(0, 2.35, startZ);
-      camLookTarget.set(0, 1.35, 0);
-      camCurrentLook.set(0, 1.35, 0);
-      camera.lookAt(camCurrentLook);
-
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      container.innerHTML = '';
-      container.appendChild(renderer.domElement);
-
-      raycaster = new THREE.Raycaster();
-      mouseVec = new THREE.Vector2();
-
-      // Warm Studio Lighting
-      ambientLight = new THREE.AmbientLight(0xfff6ed, 0.88);
-      scene.add(ambientLight);
-
-      dirLight = new THREE.DirectionalLight(0xfff1e0, 0.92);
-      dirLight.position.set(4, 10, 7);
-      dirLight.castShadow = true;
-      dirLight.shadow.mapSize.width = 1024;
-      dirLight.shadow.mapSize.height = 1024;
-      scene.add(dirLight);
-
-      // Soft Pink Rim Light to make Kawaii Panda glow at night
-      rimLight = new THREE.PointLight(0xf472b6, 0.35, 12);
-      rimLight.position.set(0, 3.5, 2.8);
-      scene.add(rimLight);
-
-      nightSpotLight = new THREE.PointLight(0x8b5cf6, 0, 20);
-      nightSpotLight.position.set(-3, 5, 4);
-      scene.add(nightSpotLight);
-
-      // Cozy Circular Pastel Stage Floor with Rose-Gold Trim Ring
-      const floorGeo = new THREE.CylinderGeometry(3.8, 4.0, 0.16, 64);
-      const floorMat = new THREE.MeshStandardMaterial({
-        color: 0xf4e4d4,
-        roughness: 0.78,
-        metalness: 0.05
-      });
-      floorMesh = new THREE.Mesh(floorGeo, floorMat);
-      floorMesh.position.y = -0.08;
-      floorMesh.receiveShadow = true;
-      scene.add(floorMesh);
-
-      const ringGeo = new THREE.TorusGeometry(3.75, 0.045, 14, 64);
-      const ringMat = new THREE.MeshStandardMaterial({ color: 0xf47296, roughness: 0.35, metalness: 0.35 });
-      floorRingMesh = new THREE.Mesh(ringGeo, ringMat);
-      floorRingMesh.rotation.x = Math.PI / 2;
-      floorRingMesh.position.y = 0.01;
-      scene.add(floorRingMesh);
-
-      smokeParticles3D = [];
-      heartParticles3D = [];
-      skyLanterns3D = [];
-      pawSteps3D = [];
-
-      build3DPanda();
-      build3DBirthdayCake();
-      build3DGiftBox();
-      build3DLampSwitch();
-
-      renderer.domElement.addEventListener('pointerdown', onThreePointerDown);
-      window.addEventListener('resize', onThreeResize);
-    }
-
-    function createHeartShapeGeo(scale = 0.22) {
-      const x = 0, y = 0;
-      const heartShape = new THREE.Shape();
-      heartShape.moveTo(x + 0.25, y + 0.25);
-      heartShape.bezierCurveTo(x + 0.25, y + 0.25, x + 0.20, y, x, y);
-      heartShape.bezierCurveTo(x - 0.30, y, x - 0.30, y + 0.35, x - 0.30, y + 0.35);
-      heartShape.bezierCurveTo(x - 0.30, y + 0.55, x - 0.10, y + 0.77, x + 0.25, y + 0.95);
-      heartShape.bezierCurveTo(x + 0.60, y + 0.77, x + 0.80, y + 0.55, x + 0.80, y + 0.35);
-      heartShape.bezierCurveTo(x + 0.80, y + 0.35, x + 0.80, y, x + 0.50, y);
-      heartShape.bezierCurveTo(x + 0.35, y, x + 0.25, y + 0.25, x + 0.25, y + 0.25);
-
-      const extrudeSettings = { depth: 0.12, bevelEnabled: true, bevelSegments: 3, steps: 1, bevelSize: 0.04, bevelThickness: 0.04 };
-      const geo = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
-      geo.center();
-      geo.scale(scale, scale, scale);
-      return geo;
-    }
-
-    function build3DPanda() {
-      pandaGroup = new THREE.Group();
-
-      // Plush Kawaii Materials
-      const whiteFurMat = new THREE.MeshStandardMaterial({
-        color: 0xfffefa,
-        emissive: 0x261a1e,
-        emissiveIntensity: 0.26,
-        roughness: 0.52
-      });
-      const creamBellyMat = new THREE.MeshStandardMaterial({
-        color: 0xfff5eb,
-        emissive: 0x221619,
-        emissiveIntensity: 0.2,
-        roughness: 0.55
-      });
-      const blackFurMat = new THREE.MeshStandardMaterial({
-        color: 0x231f24,
-        emissive: 0x120e14,
-        emissiveIntensity: 0.22,
-        roughness: 0.62
-      });
-      const pinkBlushMat = new THREE.MeshBasicMaterial({ color: 0xff85a2, transparent: true, opacity: 0.85 });
-     
+  </script>
+</body>
+</html>
